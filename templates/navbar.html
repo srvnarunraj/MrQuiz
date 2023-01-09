@@ -1,0 +1,40 @@
+	{% load static %}
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Boxicons -->
+	    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+	    <!-- My CSS -->
+	    <script src="https://cdn.tailwindcss.com"></script>
+	    <link rel="stylesheet" href="{% static 'styles/style.css' %}">
+    </head>
+    <body>
+          <!-- NAVBAR -->
+    <nav>
+        <i class='bx bx-menu' ></i>
+        <a href="#" class="nav-link"><b>JEE MOCK TEST 1</b></a>
+        <form action="#">
+            <div class="form-input">
+                <button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
+            </div>
+        </form>
+        <input type="checkbox" id="switch-mode" hidden>
+        <label for="switch-mode" class="switch-mode"></label>
+        <a href="#" class="notification">
+            <i class='bx bxs-bell' ></i>
+            <span class="num">8</span>
+        </a>
+        <a href="#" class="profile">
+            <img src="{% static 'images/people.png' %}">
+        </a>
+    </nav>
+    <!-- NAVBAR -->
+        
+        <script src="{% static 'js/script.js' %}"></script>
+    </body>
+    </html>
+  
+    

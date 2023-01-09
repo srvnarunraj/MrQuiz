@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Boxicons -->
+	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+	<!-- My CSS -->
+	 <script src="https://cdn.tailwindcss.com"></script>
+	<link rel="stylesheet" href="{% static 'styles/style.css' %}">
+	<title>Mr Exam</title>
+</head>
+<body>
+
+{% include 'sidebar.html' %}
+
+<!-- Main Body -->
+	<section id="content">
+		{% include 'navbar.html' %}
+		<!-- MAIN -->
+		<main>
+			<div class="head-title">
+				<div class="left">
+					<h1>MOCK TEST 1</h1>
+				</div>
+				<div class="left">
+					<h1 id="demo"></h1>
+				</div>
+				{% include 'main.html' %}
+			</div>
+		</main>
+	</section>
+<!-- Main Body -->
+
+	{% comment %} Quiz Timer {% endcomment %}
+	<script>
+		const hour = 2.5
+		const min = hour*60
+		let time = min * 60
+		setInterval(countDown,1000)
+		function countDown(){
+			// console.log(time)
+			let sec = time % 60;
+			const min = (Math.floor(time/60))%60;
+			const hr = Math.round(time/(60*60)-1);
+			document.getElementById("demo").innerHTML = hr + "h "
+			  + min + "m " + sec + "s ";
+			time--;
+		  }
+	</script>
+	<script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>
