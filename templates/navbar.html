@@ -22,7 +22,7 @@
             </div>
         </form>
         <input type="checkbox" id="switch-mode" hidden>
-        <label for="switch-mode" class="switch-mode"></label>
+        <label for="switch-mode" class="switch-mode" ></label>
         <a href="#" class="notification">   
             <i class='bx bxs-bell' ></i>
             <span class="num">9</span>
@@ -32,6 +32,17 @@
         </a>
     </nav>
     <!-- NAVBAR -->
+    <script>
+        if(localStorage.getItem('mytheme') ==='dark') { 
+            document.body.classList.add('dark');
+            localStorage.setItem('mytheme','dark');
+            document.getElementById("switch-mode").checked = true;
+        } else {
+            document.body.classList.remove('dark');
+            localStorage.setItem('mytheme','light');
+            document.getElementById("switch-mode").checked = false;
+        }      
+    </script>
         
         <script src="{% static 'js/script.js' %}"></script>
     </body>

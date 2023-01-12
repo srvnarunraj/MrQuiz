@@ -82,8 +82,13 @@ const switchMode = document.getElementById('switch-mode');
 switchMode.addEventListener('change', function () {
 	if(this.checked) {
 		document.body.classList.add('dark');
+		localStorage.setItem('mytheme','dark')
+		toggleButton.classList.toggle("active");
 	} else {
 		document.body.classList.remove('dark');
+		localStorage.removeItem('mytheme')
 	}
 })
+
+
 

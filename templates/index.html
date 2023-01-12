@@ -22,33 +22,65 @@
 		<main>
 			<div class="head-title">
 				<div class="left">
-					<h1>MOCK TEST 1</h1>
+					<h1 >MOCK TEST 1</h1>
 				</div>
 				<div class="left">
-					<h1 id="demo"></h1>
+					<div class="table-data">
+							<div class="head">
+								<div class='order' id="timer-label" >
+									<b>Time Remaining:</div></b>
+								<div class='order' id="timer-display"></div>
+							</div>
+						</div>
+					</div>
 				</div>
 				{% include 'main.html' %}
-			</div>
 		</main>
 	</section>
 <!-- Main Body -->
 
 	{% comment %} Quiz Timer {% endcomment %}
 	<script>
-		const hour = 2.5
-		const min = hour*60
-		let time = min * 60
-		setInterval(countDown,1000)
-		function countDown(){
-			// console.log(time)
-			let sec = time % 60;
-			const min = (Math.floor(time/60))%60;
-			const hr = Math.round(time/(60*60)-1);
-			document.getElementById("demo").innerHTML = hr + "h "
-			  + min + "m " + sec + "s ";
-			time--;
-		  }
-	</script>
+		localStorage.removeItem("endTime");
+        // Check if the end time is already stored in local storage
+        if(localStorage.getItem("endTime")) {
+          var endTime = localStorage.getItem("endTime");
+        } else {
+          // If not, set the end time for the timer
+          var endTime = new Date().getTime() + (3*60*60*1000); // 5 minutes from now
+          localStorage.setItem("endTime", endTime);
+        }
+      
+        // Update the timer every second
+        var x = setInterval(function() {
+          // Get the current time
+          var currentTime = new Date().getTime();
+      
+          // Find the distance between the current time and the end time
+          var distance = endTime - currentTime;
+      
+          // Calculate the minutes and seconds
+		  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+		  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+		  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      
+          // Display the timer in the page
+          document.getElementById("timer-display").innerHTML = hours + 'h ' + minutes + "m " + seconds + "s ";
+        
+          // Display red if time is less than
+          if (seconds < 10){
+            document.getElementById("timer-display").classList.add("times-up");
+          }
+          // If the timer is finished
+          if (distance < 0) {
+            clearInterval(x);
+            document.getElementById("timer-display").innerHTML = "EXPIRED";
+            document.getElementById("timer-display").classList.add("times-up");
+            localStorage.removeItem("endTime");
+          }
+        }, 1000);
+    </script>
+     
 	<script src="{% static 'js/script.js' %}"></script>
 </body>
 </html>
