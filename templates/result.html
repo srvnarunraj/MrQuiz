@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results</title>
+</head>
+<body>
+    <h1>You have Scored : {{tot_chem_marks}}</h1>
+    
+    <h3>In-Correct Questions</h3>
+    <table>
+        {% for i in q %}
+            <tr>
+            {% if i.id in wrng.q %}
+                {% for j in uans  %}
+                {% comment %} {{i.id,wrng}} {% endcomment %}
+            <div>       
+                        {% if forloop.counter == forloop.parentloop.counter %}
+                        <h1>
+                            Question {{i.id}} : {{i.question}} 
+                        </h1>
+                            <input type="radio" id="" name="" value="1" {% if j == '1' %}checked="checked" {%else%} disabled{% endif %} >
+                            <label for="">{{i.option1}} </label><br>
+                            <input type="radio" id="" name="" value="2" {% if j == '2' %}checked="checked" {%else%} disabled{% endif %} >
+                            <label for="">{{i.option2}}</label><br>  
+                            <input type="radio" id="option3" name="" value="3" {% if j == '3' %}checked="checked" {%else%} disabled{% endif %} >
+                            <label for="">{{i.option3}}</label><br><br>
+                            <input type="radio" id="" name="" value="4" {% if j == '4' %}checked="checked" {%else%} disabled{% endif %} >
+                            <label for="">{{i.option4}}</label><br><br>    
+                            <p>Correct Option is : <b>{{i.answer}}</b></p>
+                        {% endif %}
+                        </div>
+                    {% endfor %}
+            {% endif %}
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

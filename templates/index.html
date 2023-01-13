@@ -17,12 +17,14 @@
 
 <!-- Main Body -->
 	<section id="content">
-		{% include 'navbar.html' %}
+		{% comment %} {% include 'navbar.html' %} {% endcomment %}
 		<!-- MAIN -->
 		<main>
 			<div class="head-title">
 				<div class="left">
 					<h1 >MOCK TEST 1</h1>
+
+					<a href="/end_exam">SUBMIT EXAM</a>
 				</div>
 				<div class="left">
 					<div class="table-data">
@@ -41,7 +43,6 @@
 
 	{% comment %} Quiz Timer {% endcomment %}
 	<script>
-		localStorage.removeItem("endTime");
         // Check if the end time is already stored in local storage
         if(localStorage.getItem("endTime")) {
           var endTime = localStorage.getItem("endTime");
